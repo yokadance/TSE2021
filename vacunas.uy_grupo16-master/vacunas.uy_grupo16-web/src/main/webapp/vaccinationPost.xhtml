@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+
+    <ui:define name="metadata">
+        <ui:param name="title" value="Listado de puestos de vacunatorio #{VaccinationPostBean.nameTitle}"/>
+
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+        </style>
+        <f:metadata>
+            <f:viewParam name="centerId" value="#{VaccinationPostBean.centerId}" converter="javax.faces.Long"/>
+            <f:viewParam name="planId" value="#{VaccinationPostBean.planId}" converter="javax.faces.Long"/>
+            <!-- use view action if you are in a Java EE 7 server: <f:viewAction action="#{carFormMB.init()}"/>-->
+            <f:event type="preRenderView" listener="#{VaccinationPostBean.init}"/>
+        </f:metadata>
+        <ui:param name="renderFormAsterisks" value="true"/>
+    </ui:define>
+
+    <ui:define name="description">
+        Búqueda de Puestos
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <p:focus context="@form"/>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div id="main-buttons" class="hidden-sm hidden-xs">
+                        <p:commandButton value="Eliminar seleccionados" icon="fa fa-trash" styleClass="btn-danger"
+                                         action="#{VaccinationPostBean.remPosts}"
+                                         disabled="#{empty VaccinationPostBean.selectedPosts or VaccinationPostBean.selectedPosts.size() == 0}"
+                                         process="@this" update="@form"
+                        >
+
+                            <p:confirm header="Confirmación" message="¿Está seguro que desea eliminar el/los registro?" icon="ui-icon-danger"/>
+
+                        </p:commandButton>
+
+                        <p:spacer width="5"/>
+
+                        <p:commandButton value="Visualizar seleccionados" update="@(.ui-dialog)" styleClass="btn-info"
+                                         disabled="#{empty VaccinationPostBean.selectedPosts or VaccinationPostBean.selectedPosts.size() == 0}"
+                                         oncomplete="PF('selectedPosts').show()" icon="fa fa-search"/>
+                        <p:spacer width="5"/>
+
+                        <p:commandButton value="Volver" immediate="true"
+                                         action="#{VaccinationPostBean.back}"
+                                         process="@this"
+                                         icon="fa fa-reply"/>
+
+                    </div>
+
+                    <p:splitButton value="Opciones"
+                                   styleClass="hidden-md hidden-lg btn-primary">
+                        <p:menuitem value="Eliminar seleccionados" action="#{VaccinationPostBean.remPosts}"
+                                    process="@this" update="@form"
+                                    disabled="#{empty VaccinationPostBean.selectedPosts or VaccinationPostBean.selectedPosts.size() == 0}"
+                                    icon="fa fa-trash">
+                            <p:confirm header="Confirmation" message="Esta seguro?" icon="ui-icon-danger"/>
+                        </p:menuitem>
+                        <p:menuitem value="Visualizar seleccionados" update="@(.ui-dialog)"
+                                    oncomplete="PF('selectedPosts').show()"
+                                    disabled="#{empty VaccinationPostBean.selectedPosts or VaccinationPostBean.selectedPosts.size() == 0}"
+                                    icon="fa fa-search"
+                        />
+                        <p:separator/>
+                        <p:menuitem value="Volver" action="#{VaccinationPostBean.back}"
+                                    process="@this" immediate="true"
+                                    icon="fa fa-reply"/>
+                    </p:splitButton>
+
+                    <p:separator/>
+                    <p:dataTable widgetVar="postTable"
+                                 var="d"
+                                 value="#{VaccinationPostBean.posts}"
+                                 rows="10"
+                                 rowKey="#{d.getId()}"
+                                 lazy="true"
+                                 paginator="true"
+                                 filteredValue="#{VaccinationPostBean.filteredPosts}"
+                                 paginatorPosition="bottom"
+                                 selection="#{VaccinationPostBean.selectedPosts}"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {JumpToPageDropdown}"
+                                 currentPageReportTemplate="[ {startRecord} to {endRecord} of {totalRecords} ]"
+                                 rowsPerPageTemplate="10,15,20,30">
+
+                        <p:ajax event="rowSelectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowUnselectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowUnselect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="toggleSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+
+                        <p:column selectionMode="multiple" width="5%" styleClass="align-center"/>
+
+
+                        <p:column headerText="Nombre">
+                            #{d.getName()}
+                        </p:column>
+
+                        <p:column headerText="Observación">
+                            #{d.getObservation()}
+                        </p:column>
+
+                        <p:column headerText="">
+                            <p:link value="Ver Vacunadores" outcome="/vaccinator" >
+                                <f:param name="postId" value="#{d.getId()}"/>
+                                <f:param name="planId" value="#{VaccinationPostBean.planId}"/>
+                                <f:param name="centerId" value="#{VaccinationPostBean.centerId}"/>
+                            </p:link>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" styleClass="box-danger box-solid">
+                <p:commandButton value="Si" type="button" styleClass="btn-material btn-primary ui-confirmdialog-yes"
+                                 icon="fa fa-check"/>
+                <p:commandButton value="No" type="button" styleClass="btn-material btn-danger ui-confirmdialog-no"
+                                 icon="fa fa-close"/>
+            </p:confirmDialog>
+
+        </h:form>
+
+
+
+        <p:dialog header="Puestos seleccionados" widgetVar="selectedPosts" height="250"
+                  width="400" responsive="true" styleClass="box-success">
+            <p:dataList id="selectedPostList" value="#{VaccinationPostBean.selectedPosts}" var="post"
+                        type="definition">
+                Nombre: #{post.getName()} - Observación: #{post.getObservation()}
+            </p:dataList>
+        </p:dialog>
+
+    </ui:define>
+
+</ui:composition>

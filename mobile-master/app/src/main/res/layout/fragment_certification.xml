@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home01"
+    tools:context=".ui.Certification.CertificationFragment">
+
+
+        <Button
+            android:id="@+id/cert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordes_redondos_"
+            android:clickable="true"
+            android:layout_gravity="top"
+
+            android:outlineAmbientShadowColor="@color/white"
+            android:text="Obtener certificado de vacunas"
+            android:textColor="@color/vacunas"
+            android:theme="@style/Theme.AppCompat.Light"
+
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerId"
+                    android:layout_marginTop="55dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/vacunas" />
+
+        </FrameLayout>
+
+
+</FrameLayout>

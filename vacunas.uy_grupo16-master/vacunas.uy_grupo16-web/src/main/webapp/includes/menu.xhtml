@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<!--    !!!!!!!!!!!!!!!!!!!!!!!!!!!!! SIDEBAR-->
+
+    <ul class="sidebar-menu tree" data-widget="tree">
+        <li>
+            <p:link outcome="/index" onclick="clearBreadCrumbs()">
+                <em class="fa fa-home"></em>
+                <span>Inicio</span>
+            </p:link>
+        </li>
+        <li class="header">
+            General
+        </li>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/laboratory">
+                    <em class="fa fa-building-o"></em>
+                    <span>Laboratorios</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/disease">
+                    <em class="fa fa-warning"></em>
+                    <span>Enfermedades</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/vaccine">
+                    <em class="fa fa-medkit"></em>
+                    <span>Vacunas</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/person">
+                    <em class="fa fa-user-circle"></em>
+                    <span>Usuarios</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/vaccinationPlan">
+                    <em class="fa fa-paste"></em>
+                    <span>Planes de vacunación</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/dataSource">
+                    <em class="fa fa-database"></em>
+                    <span>Fuente de datos</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/menuCenter">
+                    <em class="fa fa-user-md"></em>
+                    <span>Vacunatorios</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/logisticPartner">
+                    <em class="fa fa-truck"></em>
+                    <span>Socios Logísticos</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/reportVaccine">
+                    <em class="fa fa-file-text"></em>
+                    <span>Reportes de Vacunas</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li>
+                <p:link outcome="/reportAct">
+                    <em class="fa fa-file-text"></em>
+                    <span>Reportes de Actos</span>
+                </p:link>
+            </li>
+        </h:panelGroup>
+
+
+    </ul>
+
+</ui:composition>

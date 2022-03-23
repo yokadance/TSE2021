@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "39755502051",
+    "project_id": "vacunasuy-g16",
+    "storage_bucket": "vacunasuy-g16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39755502051:android:db57a55e9c60b4f52c90d6",
+        "android_client_info": {
+          "package_name": "uy.vacunas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39755502051-1tqvt0us2bucurjgfmdds2j1ag35g7os.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPgD8nXHzbW8xs4Ke7yiPrsLZ-QF5qeX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39755502051-1tqvt0us2bucurjgfmdds2j1ag35g7os.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

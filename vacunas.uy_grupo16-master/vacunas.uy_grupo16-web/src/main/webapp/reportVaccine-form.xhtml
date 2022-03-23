@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+   <ui:define name="metadata">
+      <f:metadata>
+         <f:viewParam name="id" value="#{ReportBean.id}" converter="javax.faces.Long"/>
+         <f:viewParam name="vacName" value="#{ReportBean.vacName}" />
+         <f:viewParam name="disName" value="#{ReportBean.disName}" />
+         <!-- use view action if you are in a Java EE 7 server: <f:viewAction action="#{carFormMB.init()}"/>-->
+         <f:event type="preRenderView" listener="#{VaccineBean.init}"/>
+      </f:metadata>
+      <ui:param name="renderFormAsterisks" value="true"/>
+   </ui:define>
+   <ui:define name="title">
+      Reporte de Vacuna
+   </ui:define>
+   <ui:define name="body">
+      <adm:breadcrumb title="#{empty ReportBean.id ? 'Nueva vacuna' : 'Vacuna '.concat(ReportBean.id)}" link="/reportVaccine-form.jsf?id=#{ReportBean.id}"/>
+      <h:form id="form" prependId="false">
+         <p:focus rendered="#{empty ReportBean.id}"/>
+         <p:panel styleClass="box-primary card">
+
+
+
+            <p:separator/>
+
+            <h:form>
+               <div class="p-d-flex p-jc-between">
+                  <div>
+                     <h:commandButton value="Exportar en PDF" styleClass="btn-primary" ajax="false">
+                        <p:dataExporter type="pdf" target="" fileName="Reporte de #{ReportBean.vacName}-#{ReportBean.disName}" preProcessor="#{ReportBean.preProcessPDF}"/>
+                     </h:commandButton>
+                     <h:commandButton value="Volver" immediate="true"
+                                      action="reportVaccine?faces-redirect=true"
+                                      icon="fa fa-reply" />
+
+                  </div>
+
+               </div>
+
+               <p:separator/>
+               <p:dataTable id="tbl" var="product" value="#{ReportBean.reports}"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                            paginator="true" paginatorPosition="bottom" rows="10" styleClass="p-mt-2">
+
+                  <f:facet name="header">
+                     <h:outputText value="Reporte de #{ReportBean.vacName} - #{ReportBean.disName}"/>
+                  </f:facet>
+
+                  <p:columnGroup type="header">
+                     <p:row>
+                        <p:column colspan="2" headerText="Data Plan"/>
+                        <p:column colspan="2" headerText="Data Lote"/>
+                        <p:column colspan="3" headerText="Data Paquete"/>
+                     </p:row>
+                     <p:row>
+                        <p:column headerText="Plan"/>
+                        <p:column headerText="Centro"/>
+                        <p:column headerText="Numero"/>
+                        <p:column headerText="Cantidad"/>
+                        <p:column headerText="Numero"/>
+                        <p:column headerText="Cantidad"/>
+                        <p:column headerText="Estado"/>
+                     </p:row>
+
+                  </p:columnGroup>
+
+
+<!--                  <p:column>-->
+<!--                     <f:facet name="header">-->
+<!--                        <h:outputText value="Vacuna"/>-->
+<!--                     </f:facet>-->
+<!--                     <h:outputText value="#{product.vaccineName}"/>-->
+<!--                  </p:column>-->
+
+                  <p:column  styleClass="p-text-center">
+                     <f:facet name="header">
+                        <h:outputText value="Plan"/>
+                     </f:facet>
+                     <h:outputText value="#{product.planName}"/>
+                  </p:column>
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="Centro"/>
+                     </f:facet>
+                     <h:outputText value="#{product.centerName}"/>
+                  </p:column>
+
+<!--                  <p:column>-->
+<!--                     <f:facet name="header">-->
+<!--                        <h:outputText value="Enfermedad"/>-->
+<!--                     </f:facet>-->
+<!--                     <h:outputText value="#{product.diseaseName}"/>-->
+<!--                  </p:column>-->
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="n. Lote"/>
+                     </f:facet>
+                     <h:outputText value="#{product.batchNumber}"/>
+                  </p:column>
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="disp. Lote"/>
+                     </f:facet>
+                     <h:outputText value="#{product.batchAvailable}"/>
+                  </p:column>
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="n. Paquete"/>
+                     </f:facet>
+                     <h:outputText value="#{product.pNumber}"/>
+                  </p:column>
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="cant. Paquete"/>
+                     </f:facet>
+                     <h:outputText value="#{product.pQuantity}"/>
+                  </p:column>
+
+                  <p:column>
+                     <f:facet name="header">
+                        <h:outputText value="Estado"/>
+                     </f:facet>
+                     <h:outputText value="#{product.pState}"/>
+                  </p:column>
+
+               </p:dataTable>
+            </h:form>
+
+
+
+
+
+
+         </p:panel>
+
+         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" styleClass="box-danger box-solid">
+            <p:commandButton value="Yes" type="button" styleClass="btn-material btn-primary ui-confirmdialog-yes"
+                             icon="fa fa-check"/>
+            <p:commandButton value="No" type="button" styleClass="btn-material btn-danger ui-confirmdialog-no"
+                             icon="fa fa-close"/>
+         </p:confirmDialog>
+      </h:form>
+
+
+   </ui:define>
+
+</ui:composition>

@@ -1,0 +1,84 @@
+{
+  "name": "frontoffice",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.1.2",
+    "@headlessui/react": "^1.1.1",
+    "@sweetalert/with-react": "^0.1.1",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "chart.js": "^3.3.2",
+    "date-fns": "^2.21.3",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.3",
+    "react-datepicker": "^3.8.0",
+    "react-day-picker": "^7.4.10",
+    "react-dom": "^17.0.2",
+    "react-finderselect": "^1.0.5",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "react-jwt": "^1.1.2",
+    "react-loadingg": "^1.7.2",
+    "react-native-icons": "^0.7.1",
+    "react-native-vector-icons": "^4.4.2",
+    "react-scripts": "4.0.3",
+    "react-share": "^4.4.0",
+    "styled-components": "^5.3.0",
+    "sweetalert": "^2.1.2",
+    "tailwind-react-ui": "^0.8.1",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"{,!(node_modules)/**/}*.js\"",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "prettier": "@imaginary-cloud/prettier-config",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-icons": "^4.2.0",
+    "react-native-icons": "^0.7.1",
+    "react-native-vector-icons": "^4.4.2",
+    "@heroicons/react": "^1.0.1",
+    "@imaginary-cloud/prettier-config": "^1.0.0",
+    "@tailwindcss/forms": "^0.3.2",
+    "autoprefixer": "^9.8.6",
+    "husky": "^6.0.0",
+    "postcss": "^7.0.35",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.2.1",
+    "rc-time-picker": "^3.7.3",
+    "react-chat-elements": "^10.15.0",
+    "react-cookie": "^4.0.3",
+    "react-flatpickr": "^3.10.7",
+    "react-multi-select-component": "^4.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-tailwind-table": "^1.0.1",
+    "sweetalert2": "^10.16.7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+  }
+}

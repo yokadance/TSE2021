@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">VacunasUY</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="firstName">%1$s</string>
+    <string name="nav_header_desc">VacunasUY</string>
+    <string name="action_settings">Salir</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_vaccinators">Vacunatorios</string>
+    <string name="menu_certifications">Mis vacunas</string>
+    <string name="permission_required_toast">Se necesitan permisos para utilizar tu ubicacion</string>
+    <string name="permission_rationale_location">Acceder al servicio de ubicacion es requerido para esta funcionalidad.</string>
+    <string name="location_permission_denied">Se necesitan permisos para acceder a su ubicacion. Si los rechaza, luego debe de concederlos desde el  menu de configuracion de su dispositivo</string>
+    <!-- Strings related to login -->
+
+    <string name="action_sign_in">Ingresar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="log_token">Log Token</string>
+
+    <string name="msg_subscribed">Subscribed to weather topic</string>
+    <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="true">Weather</string>
+    <!-- [END fcm_default_icon_string] -->
+    <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="fcm_message">FCM Message</string>
+</resources>

@@ -1,0 +1,13 @@
+.idea/
+vacunas.uy_grupo16-ear/target/vacunas.uy_grupo16/
+
+vacunas.uy_grupo16-ejb/target/
+
+vacunas.uy_grupo16-web/target/
+
+node_modules/
+vacunas.uy_grupo16-api/target/
+
+vacunas.uy_grupo16-ear/target/
+
+vacunas.uy_grupo16.iml

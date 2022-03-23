@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+   <ui:define name="metadata">
+      <f:metadata>
+         <f:viewParam name="id" value="#{VaccineBean.id}" converter="javax.faces.Long"/>
+         <!-- use view action if you are in a Java EE 7 server: <f:viewAction action="#{carFormMB.init()}"/>-->
+         <f:event type="preRenderView" listener="#{VaccineBean.init}"/>
+      </f:metadata>
+      <ui:param name="renderFormAsterisks" value="true"/>
+   </ui:define>
+   <ui:define name="title">
+      Vacuna
+   </ui:define>
+   <ui:define name="body">
+      <adm:breadcrumb title="#{empty VaccineBean.id ? 'Nueva vacuna' : 'Vacuna '.concat(VaccineBean.id)}" link="/vaccine-form.jsf?id=#{VaccineBean.id}"/>
+      <h:form id="form" prependId="false">
+         <p:focus rendered="#{empty VaccineBean.id}"/>
+         <p:panel styleClass="box-primary card">
+            <div id="main-buttons" class="hidden-sm hidden-xs">
+               <p:commandButton value="Guardar" action="#{VaccineBean.save}" update="@form"
+                                icon="fa fa-check" styleClass="btn-primary"/>
+               <p:spacer width="5" rendered="#{VaccineBean.isNew()}"/>
+               <p:commandButton value="Limpiar" action="#{VaccineBean.clear}" process="@this"
+                                icon="fa fa-refresh" styleClass="btn-success"
+                                update="@form" rendered="#{VaccineBean.isNew()}" resetValues="true"/>
+               <p:spacer width="5" rendered="#{not VaccineBean.isNew()}"/>
+
+               <p:commandButton value="Delete" action="#{VaccineBean.remove}" process="@this"
+                                rendered="#{not VaccineBean.isNew()}" icon="fa fa-trash"
+                                styleClass="btn-danger">
+                  <f:setPropertyActionListener value="true"
+                                               target="#{facesContext.externalContext.flash.keepMessages}"/>
+                  <p:confirm header="Confirmation" message="Esta seguro?" icon="ui-icon-danger"/>
+               </p:commandButton>
+               <p:spacer width="5"/>
+               <p:commandButton value="Volver" immediate="true"
+                                action="vaccine?faces-redirect=true"
+                                process="@this"
+                                icon="fa fa-reply"/>
+            </div>
+            <p:splitButton value="Guardar" action="#{VaccineBean.save}" update="@form"
+                           icon="fa fa-check"
+                           styleClass="hidden-md hidden-lg btn-primary">
+               <p:menuitem value="Reset" action="#{VaccineBean.clear}"
+                           process="@this" update="@form" rendered="#{VaccineBean.isNew()}"
+                           resetValues="true" icon="fa fa-refresh"/>
+               <p:menuitem value="Delete" action="#{VaccineBean.remove}" process="@this"
+                           rendered="#{not VaccineBean.isNew()}" icon="fa fa-trash">
+                  <f:setPropertyActionListener value="true"
+                                               target="#{facesContext.externalContext.flash.keepMessages}"/>
+                  <p:confirm header="Confirmation" message="Esta seguro?" icon="ui-icon-danger"/>
+               </p:menuitem>
+               <p:separator/>
+               <p:menuitem value="Volver" action="vaccine?faces-redirect=true"
+                           process="@this" immediate="true"
+                           icon="fa fa-reply"/>
+            </p:splitButton>
+
+            <p:separator/>
+
+            <div class="ui-g ui-fluid">
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                  <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel for="id" value="ID"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:inputText id="id" value="#{VaccineBean.id}" readonly="true" styleClass="form-control ui-state-disabled" style="width: 100%"/>
+                     <span class="help-block">
+                                <p:message for="id" />
+                            </span>
+                  </div>
+               </div>
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                  <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel value="Nombre" for="inptName"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:inputText id="inptName" value="#{VaccineBean.name}" required="true"/>
+                     <span class="help-block">
+                                <p:message for="inptName" />
+                            </span>
+                  </div>
+               </div>
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                  <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel value="Dosis para inmunización" for="inptDose"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:inputText id="inptDose" value="#{VaccineBean.doseQuantity}" required="true"/>
+                     <span class="help-block">
+                                <p:message for="inptDose" />
+                            </span>
+                  </div>
+               </div>
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                  <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel value="Temperatura (Cº)" for="inptTemp"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:inputText id="inptTemp" value="#{VaccineBean.temperature}" required="true"/>
+                     <span class="help-block">
+                                <p:message for="inptTemp" />
+                            </span>
+                  </div>
+               </div>
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+               <div class="ui-sm-12 ui-g-11">
+                  <p:outputLabel value="Meses para caducación" for="inptMonth"/>
+               </div>
+               <div class="ui-sm-12 ui-g-11" >
+                  <p:inputText id="inptMonth" value="#{VaccineBean.monthQuantity}" required="true"/>
+                  <span class="help-block">
+                                <p:message for="inptMonth" />
+                            </span>
+               </div>
+               </div>
+                  <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                     <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel value="Período de inmunidad" for="inptInm"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:inputText id="inptInm" value="#{VaccineBean.inmunity}" required="true"/>
+                     <span class="help-block">
+                                <p:message for="inptInm" />
+                            </span>
+                  </div>
+               </div>
+
+               <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                  <div class="ui-sm-12 ui-g-11">
+                     <p:outputLabel for="@next" value="Laboratorio"/>
+                  </div>
+                  <div class="ui-sm-12 ui-g-11" >
+                     <p:selectOneMenu id="optionLab" value="#{VaccineBean.laboratory}" required="true">
+                        <f:selectItem itemLabel="Seleccione Laboratorio" itemValue=""/>
+                        <f:selectItems value="#{VaccineBean.listDtLaboratories}"/>
+                     </p:selectOneMenu>
+                  </div>
+               </div>
+
+               <h:panelGroup rendered="#{empty VaccineBean.id}">
+                  <div class="ui-sm-12 ui-g-6 ui-g-nopad">
+                     <div class="ui-sm-12 ui-g-11">
+                        <p:outputLabel for="@next" value="Enfermedad"/>
+                     </div>
+                     <div class="ui-sm-12 ui-g-11" >
+                        <p:selectOneMenu id="optionDis" value="#{VaccineBean.disease}" required="true">
+                           <f:selectItem itemLabel="Seleccione Enfermedad" itemValue=""/>
+                           <f:selectItems value="#{VaccineBean.listDtDiseases}"/>
+                        </p:selectOneMenu>
+                     </div>
+                  </div>
+               </h:panelGroup>
+
+               <h:panelGroup rendered="#{!empty VaccineBean.id}">
+                  <div class="ui-sm-12 ui-g-6 ui-g-nopad" >
+                     <div class="ui-sm-12 ui-g-11">
+                        <p:outputLabel value="Enfermedad" for="inptDisExist"/>
+                     </div>
+                     <div class="ui-sm-12 ui-g-11" >
+                        <p:inputText id="inptDisExist" value="#{VaccineBean.disease}" readonly="true" styleClass="form-control ui-state-disabled"/>
+                        <span class="help-block">
+                                <p:message for="inptDisExist" />
+                            </span>
+
+                     </div>
+                  </div>
+               </h:panelGroup>
+
+            </div>
+            <h:panelGroup id="footer" layout="block" styleClass="hidden-sm hidden-md hidden-lg">
+               <hr/>
+               <p:splitButton value="Guardar" action="#{VaccineBean.save}" update="@form"
+                              icon="fa fa-check"
+                              styleClass="hidden-md hidden-lg btn-primary">
+                  <p:menuitem value="Reset" action="#{VaccineBean.clear}"
+                              process="@this" update="@form" rendered="#{VaccineBean.isNew()}"
+                              resetValues="true" icon="fa fa-refresh"/>
+                  <p:menuitem value="Delete" action="#{VaccineBean.remove}" process="@this"
+                              rendered="#{not VaccineBean.isNew()}" icon="fa fa-trash">
+                     <f:setPropertyActionListener value="true"
+                                                  target="#{facesContext.externalContext.flash.keepMessages}"/>
+                     <p:confirm header="Confirmation" message="Esta seguro?" icon="ui-icon-danger"/>
+                  </p:menuitem>
+                  <p:separator/>
+                  <p:menuitem value="Volver" action="vaccine?faces-redirect=true"
+                              process="@this" immediate="true"
+                              icon="fa fa-reply"/>
+               </p:splitButton>
+            </h:panelGroup>
+         </p:panel>
+
+         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" styleClass="box-danger box-solid">
+            <p:commandButton value="Yes" type="button" styleClass="btn-material btn-primary ui-confirmdialog-yes"
+                             icon="fa fa-check"/>
+            <p:commandButton value="No" type="button" styleClass="btn-material btn-danger ui-confirmdialog-no"
+                             icon="fa fa-close"/>
+         </p:confirmDialog>
+      </h:form>
+
+
+   </ui:define>
+
+</ui:composition>

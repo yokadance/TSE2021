@@ -1,0 +1,98 @@
+{
+  "_from": "react-tailwind-table",
+  "_id": "react-tailwind-table@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-BLWag35mD8D2VcgPYXLFxf7FZOYN54blK7aTs5el+1aR1sYYG90HlE2zrREFv/ld6wPvw6XdfKuB1Tys7jfS4w==",
+  "_location": "/react-tailwind-table",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-tailwind-table",
+    "name": "react-tailwind-table",
+    "escapedName": "react-tailwind-table",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-tailwind-table/-/react-tailwind-table-1.0.1.tgz",
+  "_shasum": "38dc62c78f7fa62be0695e3feaf88a9f8ad44d73",
+  "_spec": "react-tailwind-table",
+  "_where": "/home/gon/Desktop/JavaEE/Laboratorio/frontoffice",
+  "author": {
+    "name": "mklef121"
+  },
+  "bugs": {
+    "url": "https://github.com/mklef121/react-tailwind-table/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A Responsive Table component Made with React js and Tailwind Css. Has Pagination and search ability.",
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/react": "^16.9.27",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "prettier": "^2.0.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "semantic-release": "^17.0.7",
+    "tailwindcss": "^1.4.6"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/mklef121/react-tailwind-table#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "name": "react-tailwind-table",
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mklef121/react-tailwind-table.git"
+  },
+  "scripts": {
+    "build": "microbundle-crl --css-modules  false --no-compress --format modern,cjs",
+    "deploy": "gh-pages -d example/build",
+    "predeploy": "cd example && npm install && npm run build",
+    "prepublish": "run-s build",
+    "semantic-release": "semantic-release",
+    "start": "microbundle-crl watch  --css-modules  false --no-compress --format modern,cjs",
+    "tailwind-build": "postcss ./src/css/tailwind-setup.css -o ./src/css/output.css",
+    "test": "run-s test:unit test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint . --fix",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom --coverage=true",
+    "test:watch": "react-scripts test --env=jsdom"
+  },
+  "source": "src/index.tsx",
+  "version": "1.0.1"
+}

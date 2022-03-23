@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+
+    <ui:define name="metadata">
+        <ui:param name="title" value="Restricciónes del plan #{PlanRestrictionBean.nameTitle}"/>
+
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+        </style>
+        <f:metadata>
+            <f:viewParam name="planId" value="#{PlanRestrictionBean.planId}" converter="javax.faces.Long"/>
+            <!-- use view action if you are in a Java EE 7 server: <f:viewAction action="#{carFormMB.init()}"/>-->
+            <f:event type="preRenderView" listener="#{PlanRestrictionBean.init}"/>
+        </f:metadata>
+        <ui:param name="renderFormAsterisks" value="true"/>
+    </ui:define>
+
+    <ui:define name="description">
+        Listado de Restricciones
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <p:focus context="@form"/>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div id="main-buttons" class="hidden-sm hidden-xs">
+
+                        <p:commandButton value="Visualizar seleccionados" update="@(.ui-dialog)" styleClass="btn-info"
+                                         disabled="#{empty PlanRestrictionBean.selectedRestrictions or PlanRestrictionBean.selectedRestrictions.size() == 0}"
+                                         oncomplete="PF('selectedRestrictions').show()" icon="fa fa-search"/>
+                        <p:spacer width="5"/>
+
+                        <p:commandButton value="Volver" immediate="true"
+                                         action="vaccinationPlan?faces-redirect=true"
+                                         process="@this"
+                                         icon="fa fa-reply"/>
+
+                    </div>
+
+                    <p:splitButton  value="Volver" action="vaccinationPlan?faces-redirect=true"
+                                    process="@this" immediate="true"
+                                    icon="fa fa-reply" styleClass="hidden-md hidden-lg btn-primary">
+                        <p:separator/>
+                        <p:menuitem value="Visualizar seleccionados" update="@(.ui-dialog)"
+                                    oncomplete="PF('selectedRestrictions').show()"
+                                    disabled="#{empty PlanRestrictionBean.selectedRestrictions or PlanRestrictionBean.selectedRestrictions.size() == 0}"
+                                    icon="fa fa-search"/>
+
+
+                        <f:param name="planId" value="#{PlanRestrictionBean.planId}"/>
+                    </p:splitButton>
+
+                    <p:separator/>
+                    <p:dataTable widgetVar="cenTable"
+                                 var="d"
+                                 value="#{PlanRestrictionBean.restrictions}"
+                                 rows="10"
+                                 rowKey="#{d.getId()}"
+                                 lazy="true"
+                                 paginator="true"
+                                 filteredValue="#{PlanRestrictionBean.filteredRestrictions}"
+                                 paginatorPosition="bottom"
+                                 selection="#{PlanRestrictionBean.selectedRestrictions}"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {JumpToPageDropdown}"
+                                 currentPageReportTemplate="[ {startRecord} to {endRecord} of {totalRecords} ]"
+                                 rowsPerPageTemplate="10,15,20,30">
+
+                        <p:ajax event="rowSelectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowUnselectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="rowUnselect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                        <p:ajax event="toggleSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+
+                        <p:column selectionMode="multiple" width="5%" styleClass="align-center"/>
+
+<!--                        <p:column headerText="ID">-->
+<!--                            #{d.getId()}-->
+<!--                        </p:column>-->
+
+                        <p:column headerText="Elemento">
+                            #{d.getElementName()}
+                        </p:column>
+
+                        <p:column headerText="Operador Lógico">
+                            #{d.getLogicOperator()}
+                        </p:column>
+
+                        <p:column headerText="Valor">
+                            #{d.getValue()}
+                        </p:column>
+
+                        <p:column headerText="Descripción">
+                            #{d.getDescription()}
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" styleClass="box-danger box-solid">
+                <p:commandButton value="Si" type="button" styleClass="btn-material btn-primary ui-confirmdialog-yes"
+                                 icon="fa fa-check"/>
+                <p:commandButton value="No" type="button" styleClass="btn-material btn-danger ui-confirmdialog-no"
+                                 icon="fa fa-close"/>
+            </p:confirmDialog>
+
+        </h:form>
+
+
+
+        <p:dialog header="Agendas seleccionadas" widgetVar="selectedRestrictions" height="250"
+                  width="400" responsive="true" styleClass="box-success">
+            <p:dataList id="selectedRestrictions" value="#{PlanRestrictionBean.selectedRestrictions}" var="res"
+                        type="definition">
+                Elemento: #{res.getElementName()} - Valor: #{res.getValue()} - Operador: #{res.getLogicOperator()}
+            </p:dataList>
+        </p:dialog>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html">
+
+    <!--   BARRA QUE SE MUESTRA CUANDO NO SE ESTÁ UTILIZANDO LA SIDEBAR-->
+
+    <ul class="nav navbar-nav">
+        <li>
+            <p:link outcome="/index" onclick="clearBreadCrumbs()">
+                <em class="fa fa-home"></em>
+                <span>Inicio</span>
+            </p:link>
+        </li>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Laboratorios
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/laboratory">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/index">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Enfermedades
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/disease">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/disease-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Vacunas
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/vaccine">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/vaccine-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Usuarios
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/person">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/person-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Planes
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/vaccinationPlan">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/vaccinationPlan-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Fuentes
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/dataSource">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/dataSource-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Centros
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/menuCenter">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/menuCenter-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Administrador' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Socios
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/logisticPartner">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/logisticPartner-form">
+                            <span>Nuevo</span>
+                            <em class="fa fa-plus-circle"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Reporte Vacunas
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/reportVaccine">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+        <h:panelGroup rendered= "#{'Autoridad' eq logOn.role or 'Super' eq logOn.role  ? 'true' : 'false'}">
+            <li class="dropdown">
+                <a href="/index" class="dropdown-toggle" data-toggle="dropdown">Reporte Actos
+                    <span class="caret"></span> </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <p:link outcome="/reportAct">
+                            <span>Listar</span>
+                            <em class="fa fa-th-list"></em>
+                        </p:link>
+                    </li>
+                </ul>
+            </li>
+        </h:panelGroup>
+
+
+    </ul>
+</ui:composition>

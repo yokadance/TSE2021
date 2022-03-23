@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">auth-testing.iduruguay.gub.uy</domain>
+        <domain includeSubdomains="true">vacunasuyg16.web.elasticloud.uy</domain>
+        <domain includeSubdomains="true">192.168.13.121</domain>
+        <domain includeSubdomains="true">172.20.10.14</domain>
+
+
+    </domain-config>
+</network-security-config>

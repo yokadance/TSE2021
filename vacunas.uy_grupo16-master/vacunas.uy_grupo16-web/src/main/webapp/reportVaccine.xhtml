@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+   <ui:define name="metadata">
+      <ui:param name="title" value="Reporte de vacunas"/>
+
+      <style type="text/css">
+         .ui-datatable .ui-datatable-header {
+            text-align: right !important;
+         }
+      </style>
+   </ui:define>
+
+   <ui:define name="description">
+      Reporte
+   </ui:define>
+
+   <ui:define name="body">
+      <h:form>
+         <p:focus context="@form"/>
+         <div class="box box-primary">
+            <div class="box-header with-border">
+
+
+
+
+               <p:separator/>
+               <p:dataTable widgetVar="vaccTable"
+                            var="d"
+                            value="#{ReportBean.vaccines}"
+                            rows="10"
+                            rowKey="#{d.getId()}"
+                            lazy="true"
+                            paginator="true"
+                            filteredValue="#{ReportBean.filteredVaccines}"
+                            paginatorPosition="bottom"
+                            selection="#{ReportBean.selectedVaccines}"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {JumpToPageDropdown}"
+                            currentPageReportTemplate="[ {startRecord} to {endRecord} of {totalRecords} ]"
+                            rowsPerPageTemplate="10,15,20,30">
+
+                  <p:ajax event="rowSelectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                  <p:ajax event="rowUnselectCheckbox" update="@(.ui-button, .ui-confirm-dialog)"/>
+                  <p:ajax event="rowSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                  <p:ajax event="rowUnselect" update="@(.ui-button, .ui-confirm-dialog)"/>
+                  <p:ajax event="toggleSelect" update="@(.ui-button, .ui-confirm-dialog)"/>
+
+                  <p:column selectionMode="multiple" width="5%" styleClass="align-center"/>
+
+                  <p:column headerText="Nombre">
+                     <p:link value="#{d.getName()}" outcome="/reportVaccine-form" >
+                        <f:param name="id" value="#{d.getId()}"/>
+                        <f:param name="vacName" value="#{d.getName()}"/>
+                        <f:param name="disName" value="#{d.getDisease()}"/>
+                     </p:link>
+                  </p:column>
+
+                  <p:column headerText="Enfermedad">
+                     #{d.getDisease()}
+                  </p:column>
+
+                  <p:column headerText="Laboratorio">
+                     #{d.getLaboratory()}
+                  </p:column>
+
+
+               </p:dataTable>
+            </div>
+         </div>
+
+         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" styleClass="box-danger box-solid">
+            <p:commandButton value="Si" type="button" styleClass="btn-material btn-primary ui-confirmdialog-yes"
+                             icon="fa fa-check"/>
+            <p:commandButton value="No" type="button" styleClass="btn-material btn-danger ui-confirmdialog-no"
+                             icon="fa fa-close"/>
+         </p:confirmDialog>
+
+      </h:form>
+
+
+
+      <p:dialog header="Vacunas seleccionadas" widgetVar="selectedVaccines" height="250"
+                width="400" responsive="true" styleClass="box-success">
+         <p:dataList id="selectedVaccinesList" value="#{ReportBean.selectedVaccines}" var="vac"
+                     type="definition">
+            Nombre: #{vac.getName()} - Dosis: #{vac.getDoseQuantity()} - Inmunidad: #{vac.getInmunity()}
+         </p:dataList>
+      </p:dialog>
+
+   </ui:define>
+
+</ui:composition>

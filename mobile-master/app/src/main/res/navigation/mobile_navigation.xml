@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="uy.vacunas.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_vaccinators"
+        android:name="uy.vacunas.ui.VaccinationCenter.VaccinatorsFragment"
+        android:label="@string/menu_vaccinators"
+        tools:layout="@layout/fragment_vaccinators" />
+
+    <fragment
+        android:id="@+id/nav_certifications"
+        android:name="uy.vacunas.ui.Certification.CertificationFragment"
+        android:label="@string/menu_certifications"
+        tools:layout="@layout/fragment_certification" />
+    <fragment
+        android:id="@+id/vaccinatorCentersMapsFragment"
+        android:name="uy.vacunas.ui.VaccinationCenter.VaccinatorCentersMapsFragment"
+        android:label="fragment_vaccinator_centers_maps"
+        tools:layout="@layout/fragment_vaccinator_centers_maps" />
+    <activity
+        android:id="@+id/loginActivity2"
+        android:name="uy.vacunas.ui.login.LoginActivity"
+        android:label="activity_login2"
+        tools:layout="@layout/activity_login2" />
+
+
+<!--    <fragment
+        android:id="@+id/vaccinationCenterFragment"
+        android:name="uy.vacunas.ui.login.VaccinationCenterFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />-->
+
+
+<!--    <fragment
+        android:id="@+id/vaccineCertificationFragment"
+        android:name="uy.vacunas.ui.Certification.VaccineCertificationFragment"
+        android:label="@string/menu_certifications"
+        tools:layout="@layout/fragment_vaccine_certification" />-->
+</navigation>

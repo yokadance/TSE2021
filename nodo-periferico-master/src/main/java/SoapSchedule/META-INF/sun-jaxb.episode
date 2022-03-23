@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2021.06.13 a las 07:52:08 PM UYT 
+
+  -->
+      
+    <bindings xmlns:tns="http://in28minutes.com/students" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="uy.vacunas.consumingwebservice.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:sendConfirmedReservations">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendConfirmedReservations"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:Reservation">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.Reservation"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://soap.webservice/" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="uy.vacunas.consumingwebservice.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:loginVaccinatorCenter">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.LoginVaccinatorCenter"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:loginVaccinatorCenterResponse">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.LoginVaccinatorCenterResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:receiveConfirmed">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.ReceiveConfirmed"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:receiveConfirmedResponse">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.ReceiveConfirmedResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendReservations">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendReservations"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendReservations2">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendReservations2"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendReservations2Response">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendReservations2Response"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendReservationsResponse">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendReservationsResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendScheduleById">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendScheduleById"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sendScheduleByIdResponse">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.SendScheduleByIdResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtReservationSend">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtReservationSend"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtBaseModel">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtBaseModel"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtSchedule">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtSchedule"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtAuthority">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtAuthority"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtRole">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtRole"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtVaccinationPlan">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtVaccinationPlan"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtVaccine">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtVaccine"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtPerson">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtPerson"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtReservation">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtReservation"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dtVaccinationCenter">
+                  
+            <class ref="uy.vacunas.consumingwebservice.wsdl.DtVaccinationCenter"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:reservationState">
+                  
+            <typesafeEnumClass ref="uy.vacunas.consumingwebservice.wsdl.ReservationState"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sex">
+                  
+            <typesafeEnumClass ref="uy.vacunas.consumingwebservice.wsdl.Sex"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>
